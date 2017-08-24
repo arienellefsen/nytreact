@@ -1,8 +1,6 @@
 import React from 'react';
 import Search from './Search';
 
-
-
 const Results = (props) => {
   return (
 
@@ -10,8 +8,8 @@ const Results = (props) => {
       <h1>Results here</h1>
       <ul>
         {props.articles.map((article, index) => {
-           var title= article.headline.main;
-           var url = article.web_url;
+           let title= article.headline.main;
+           let url = article.web_url;
             return (
                 <li key={index}>
                     {article.headline.main}<button onClick={() => props.saveArticle(title, url)}> Save Article</button> 

@@ -7,7 +7,7 @@ var helper = {
     // This function serves our purpose of running the query to geolocate.
     runQuery: function(term, start, end) {
         // Figure out the geolocation
-        var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + geocodeAPI + "&q=" + term + "&page=3&begin_date=" + start + "&end_date=" + end;
+        const queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + geocodeAPI + "&q=" + term + "&page=3&begin_date=" + start + "&end_date=" + end;
         console.log("#####" + queryURL);
         return axios.get(queryURL).then(function(response) {
             // If get get a result, return that result's formatted address property
@@ -22,8 +22,12 @@ var helper = {
         return axios.post("/saved", {
             title: title,
             url: url
-
         });
+    },
+
+    getArticle: function() {
+        console.log('display saved articles');
+        return axios.post("/display");
     }
 };
 

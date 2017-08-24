@@ -2,11 +2,9 @@ import React from 'react';
 import Header from './Header';
 import Search from './Search';
 import Results from './Results';
-import Results2 from './Results2';
-
 import Saved from './Saved';
 
-var helpers = require("./utils/helpers");
+const helpers = require("./utils/helpers");
 
 class Main extends React.Component {
     
@@ -17,15 +15,23 @@ class Main extends React.Component {
         // getinitialState
         this.state = {
             articles: [],
-            saved: []
+            title: '',
+            url: '',
+            display: []
         };
     }
 
-   
-
     componentDidMount() {
-        console.log('Component did mount!');
-    }
+            console.log('Component did mount!');
+        helpers.getArticle().then(function(response) {
+            console.log(response);
+      if (response !== this.state.display) {
+            console.log("display", response.data);
+            this.setState({ display: response.data });
+      }
+    }.bind(this));
+  }
+    
 
     componentDidUpdate() {
         console.log('Component did update!');
@@ -40,12 +46,11 @@ class Main extends React.Component {
          helpers.saveArticle(title, url)
         {
             this.setState({ 
-                saved:title,
+                title:title,
                 url: url
         });
         };
     }   
-
  
     render() {
         return (
@@ -62,10 +67,7 @@ class Main extends React.Component {
                             }}
                         />
                         <Results articles={this.state.articles} saveArticle={this.saveArticle}/>
-                        <Saved 
-                            name="Sara" 
-                         />
-                         <Results2/>
+                         <Saved display={this.state.display}/>
                     </div>
                 </div>
             </div>

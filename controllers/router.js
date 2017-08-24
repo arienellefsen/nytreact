@@ -1,17 +1,17 @@
-var Article = require("../models/Article.js");
-var request = require('request');
+const Article = require("../models/Article.js");
+const request = require('request');
 
 module.exports = function(app) {
 
-    app.get("/api", function(req, res) {
-
+    app.get("/display", function(req, res) {
         // We will find all the records, sort it in descending order, then limit the records to 5
-        History.find({}).sort([
+        Article.find({}).sort([
             ["date", "descending"]
         ]).limit(5).exec(function(err, doc) {
             if (err) {
                 console.log(err);
             } else {
+                console.log(doc);
                 res.send(doc);
             }
         });
