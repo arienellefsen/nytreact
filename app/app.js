@@ -1,7 +1,10 @@
-// Include the Main React Dependencies
-import React from 'react';
-import './css/style.css';
+import React from 'react'
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import Main from './components/Main';
 
-// This code here allows us to render our main component (in this case Main)
-ReactDOM.render( <Main/> , document.getElementById("app"));
+render((
+  <BrowserRouter>
+    <Main />
+  </BrowserRouter>
+), document.getElementById('app'));

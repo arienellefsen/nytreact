@@ -8,6 +8,9 @@ var ArticleSchema = new Schema({
     date: {
         type: Date
     },
+    end: {
+        type: Date
+    },
     url: {
         type: String
     }
