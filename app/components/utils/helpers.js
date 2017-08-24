@@ -27,8 +27,23 @@ var helper = {
 
     getArticle: function() {
         console.log('display saved articles');
-        return axios.post("/display");
+        return axios.get("/display");
+    },
+
+    deleteArticle: function(id, cb) {
+        console.log('delete id' + id);
+        return axios.post("/delete", {
+                id: id
+            }).then(function(response) {
+                console.log(response);
+                cb(response);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
     }
+
 };
 
 

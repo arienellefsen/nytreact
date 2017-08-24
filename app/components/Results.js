@@ -3,9 +3,13 @@ import Search from './Search';
 
 const Results = (props) => {
   return (
-
+    <br>
+<div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title text-center">Saved Articles</h3>
+        </div>
+        <div className="panel-body text-left">
     <header className="top">
-      <h1>Results here</h1>
       <ul>
         {props.articles.map((article, index) => {
            let title= article.headline.main;
@@ -18,6 +22,8 @@ const Results = (props) => {
         })}
       </ul>
     </header>
+    </div>
+    </div>
   )
 }
 

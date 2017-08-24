@@ -1,4 +1,6 @@
 var React = require("react");
+import Results from './Results';
+
 
 // This is the History component. It will be used to show a log of  recent searches.
 var Saved = React.createClass({
@@ -7,12 +9,25 @@ var Saved = React.createClass({
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title text-center">Search History</h3>
+          <h3 className="panel-title text-center">Saved Articles</h3>
         </div>
-        <div className="panel-body text-center">
+        <div className="panel-body text-left">
 
           {/* Here we use a map function to loop through an array in JSX */}
-          <h1> Display</h1>
+          {this.props.display.map((search, i)=> {
+             let id= search._id;
+            console.log('id: ' +id);
+            return (
+              <div>
+              <p key={i}>{search.title}</p><button onClick={() => {
+                
+                this.props.deleteArticle(id)
+                
+                
+                }}>Delete</button>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

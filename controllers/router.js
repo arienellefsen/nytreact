@@ -7,7 +7,7 @@ module.exports = function(app) {
         // We will find all the records, sort it in descending order, then limit the records to 5
         Article.find({}).sort([
             ["date", "descending"]
-        ]).limit(5).exec(function(err, doc) {
+        ]).exec(function(err, doc) {
             if (err) {
                 console.log(err);
             } else {
@@ -35,4 +35,18 @@ module.exports = function(app) {
             }
         });
     });
-}
+
+    app.post("/delete", function(req, res) {
+        var id = req.body.id;
+
+        if (!id) {
+
+            return res.json({ error: 'sorry id is undefined!' })
+        }
+        console.log('id to be deleted:' + id);
+        Article.remove({ _id: id }, function(err) {
+            if (err) throw err;
+            res.redirect('/');
+        });
+    });
+};
