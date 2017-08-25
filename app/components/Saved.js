@@ -16,7 +16,6 @@ var Saved = React.createClass({
           {/* Here we use a map function to loop through an array in JSX */}
           {this.props.display.map((search, i)=> {
              let id= search._id;
-            console.log('id: ' +id);
             return (
               <div>
               <p key={i}>{search.title}</p><button onClick={() => {
